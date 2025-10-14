@@ -180,10 +180,10 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1  # Required for Django Allauth
 
-ACCOUNT_LOGIN_METHODS = {'email'}  # Use email for authentication
-     # Use email for authentication
+# Allow both username and email login
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'  # Allow both username and email
 ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_USERNAME_REQUIRED = True  # Enable username for admin login
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 
