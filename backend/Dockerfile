@@ -7,7 +7,7 @@ WORKDIR /app
 
 # 1. install OS deps (including pg_config)
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends libpq-dev gcc && \
+    apt-get install -y --no-install-recommends libpq-dev gcc curl && \
     rm -rf /var/lib/apt/lists/*
 
 # 2. now install Python deps

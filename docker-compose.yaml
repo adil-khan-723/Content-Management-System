@@ -1,0 +1,23 @@
+services:
+    frontend:
+        build: ./frontend/cms-frontend
+        ports:
+            - 8080:8080
+        depends_on:
+              backend:
+                condition: service_healthy
+
+    backend:
+        build: ./backend
+        ports:
+            - 8000:8000
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8000/admin/login"]
+            interval: 5s
+            timeout: 5s
+            retries: 5
+            start_period: 0s
+        volumes:
+            - ./backend/data:/app/data
+
+
