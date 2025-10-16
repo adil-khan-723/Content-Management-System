@@ -105,7 +105,8 @@ WSGI_APPLICATION = 'cms_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # Store the SQLite DB inside the mounted volume so data persists across container restarts
+        'NAME': BASE_DIR / 'data' / 'db.sqlite3',
     }
 }
 

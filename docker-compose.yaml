@@ -20,6 +20,10 @@ services:
         image: backend
         ports:
             - 8000:8000
+        environment:
+            DJANGO_SUPERUSER_USERNAME: OGGY
+            DJANGO_SUPERUSER_EMAIL: oggy@example.com
+            DJANGO_SUPERUSER_PASSWORD: OGGY
         healthcheck:
             test: ["CMD", "curl", "-f", "http://localhost:8000/admin/login"]
             interval: 5s
