@@ -26,6 +26,10 @@ COPY --from=build /packages /usr/local
 
 COPY . .
 
+RUN apt update && \
+    apt install --no-install-recommends -y curl && \
+    rm -rf var/lib/apt/lists/*
+
 EXPOSE 8000
 
 ENTRYPOINT [ "./entrypoint.sh" ]
