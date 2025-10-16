@@ -1,14 +1,23 @@
 services:
     frontend:
-        build: ./frontend/cms-frontend
+        build: 
+            context: 
+                ./frontend/cms-frontend
+            dockerfile: 
+                Dockerfile_multi_stage
+        image: frontend
         ports:
-            - 8080:8080
+            - 80:80
         depends_on:
               backend:
                 condition: service_healthy
-
     backend:
-        build: ./backend
+        build: 
+            context:
+                ./backend
+            dockerfile:
+                Dockerfile_multi_stage
+        image: backend
         ports:
             - 8000:8000
         healthcheck:
@@ -16,7 +25,7 @@ services:
             interval: 5s
             timeout: 5s
             retries: 5
-            start_period: 0s
+            start_period: 10s
         volumes:
             - ./backend/data:/app/data
 
